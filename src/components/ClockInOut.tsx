@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,7 +21,7 @@ export const ClockInOut = ({ isClocked, currentSession, onClockIn, onClockOut }:
       if (isClocked && currentSession) {
         const start = new Date(currentSession.clockIn);
         const now = new Date();
-        const diff = now - start;
+        const diff = now.getTime() - start.getTime();
         const hours = Math.floor(diff / (1000 * 60 * 60));
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         setSessionDuration(`${hours}h ${minutes}m`);
